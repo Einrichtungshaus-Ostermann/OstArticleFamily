@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="../../../../engine/Shopware/Components/Plugin/schema/config.xsd">
+    <elements>
+
+        <element type="button">
+            <name>defaultButton</name>
+            <label><![CDATA[<b>Allgemeine Einstellungen</b>]]></label>
+        </element>
+
+        <element type="text">
+            <name>pdfDirectory</name>
+            <label>Verzeichnis</label>
+            <value>/htdocs/www.ostermann.de/typenplan/</value>
+            <description>In welchem Verzeichnis sind die .pdf Typenpläne hinterlegt?</description>
+        </element>
+
+        <element type="button">
+            <name>attributeButton</name>
+            <label><![CDATA[<b>Attribute</b>]]></label>
+        </element>
+
+        <element type="text">
+            <name>attributeFamily</name>
+            <label>Attribut</label>
+            <value>attr7</value>
+            <description>In welches Attribut soll die ID des Typenplans gespeichert werden?</description>
+        </element>
+
+    </elements>
+</config>
