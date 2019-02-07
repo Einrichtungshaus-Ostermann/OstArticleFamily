@@ -10,6 +10,9 @@
  * 1.0.0
  * - initial release
  *
+ * 1.0.1
+ * - changed name of configuration
+ *
  * @package   OstArticleFamily
  *
  * @author    Eike Brandt-Warneke <e.brandt-warneke@ostermann.de>

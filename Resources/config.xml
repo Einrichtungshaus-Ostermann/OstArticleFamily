@@ -22,7 +22,7 @@
 
         <element type="text">
             <name>attributeFamily</name>
-            <label>Attribut</label>
+            <label>Typenplan ID</label>
             <value>attr7</value>
             <description>In welches Attribut soll die ID des Typenplans gespeichert werden?</description>
         </element>
