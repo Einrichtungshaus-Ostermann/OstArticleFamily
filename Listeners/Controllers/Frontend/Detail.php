@@ -17,6 +17,7 @@ use Shopware_Controllers_Frontend_Detail as Controller;
 use Shopware\Bundle\StoreFrontBundle\Service\ListProductServiceInterface;
 use Shopware\Bundle\StoreFrontBundle\Service\ContextServiceInterface;
 use Shopware\Components\Compatibility\LegacyStructConverter;
+use OstArticleFamily\Models\Family;
 
 class Detail
 {
@@ -130,7 +131,11 @@ class Detail
         // convert to legacy
         $articles = $legacyStructConverter->convertListProductStructList($products);
 
+        // get the family
+        $family = Shopware()->Models()->toArray(Shopware()->Models()->find(Family::class, $familyId));
+
         // assign them
+        $view->assign("ostArticleFamily", $family);
         $view->assign("ostArticleFamilyArticles", $articles);
     }
 }

@@ -15,6 +15,7 @@
  *
  * 1.1.0
  * - added backend app for additional family keys
+ * - added .pdf download to article slider
  *
  * @package   OstArticleFamily
  *
