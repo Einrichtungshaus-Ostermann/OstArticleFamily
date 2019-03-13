@@ -18,6 +18,7 @@ use Shopware\Bundle\AttributeBundle\Service\CrudService;
 use Shopware\Components\Model\ModelManager;
 use Shopware\Components\Plugin;
 use Shopware\Components\Plugin\Context\UninstallContext;
+use Exception;
 
 class Uninstall
 {
@@ -55,7 +56,8 @@ class Uninstall
      * @var array
      */
     protected $models = [
-        Models\Family::class
+        Models\Family::class,
+        Models\Family\Key::class
     ];
 
     /**
@@ -106,6 +108,9 @@ class Uninstall
         );
 
         // remove them
-        $tool->dropSchema($classes);
+        try {
+            $tool->dropSchema($classes);
+        } catch (Exception $exception) {
+        }
     }
 }

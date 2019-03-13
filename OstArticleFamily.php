@@ -13,6 +13,9 @@
  * 1.0.1
  * - changed name of configuration
  *
+ * 1.1.0
+ * - added backend app for additional family keys
+ *
  * @package   OstArticleFamily
  *
  * @author    Eike Brandt-Warneke <e.brandt-warneke@ostermann.de>
@@ -75,7 +78,8 @@ class OstArticleFamily extends Plugin
         // update it to current version
         $updater = new Setup\Update(
             $this,
-            $context
+            $context,
+            $this->getPath() . '/'
         );
         $updater->install();
 
@@ -93,7 +97,8 @@ class OstArticleFamily extends Plugin
         // update the plugin
         $updater = new Setup\Update(
             $this,
-            $context
+            $context,
+            $this->getPath() . '/'
         );
         $updater->update($context->getCurrentVersion());
 

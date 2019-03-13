@@ -62,6 +62,9 @@ class SyncArticlesCommand extends ShopwareCommand
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         // ...
+        $output->writeln('setting families for articles');
+        
+        // ...
         $families = $this->modelManager->getRepository(Family::class)->findAll();
 
         // reset every attribute

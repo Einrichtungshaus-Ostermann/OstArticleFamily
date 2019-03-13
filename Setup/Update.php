@@ -14,6 +14,7 @@ namespace OstArticleFamily\Setup;
 
 use Shopware\Components\Plugin;
 use Shopware\Components\Plugin\Context\InstallContext;
+use Exception;
 
 class Update
 {
@@ -34,14 +35,23 @@ class Update
     /**
      * ...
      *
+     * @var string
+     */
+    protected $pluginDir;
+
+    /**
+     * ...
+     *
      * @param Plugin         $plugin
      * @param InstallContext $context
+     * @param string         $pluginDir
      */
-    public function __construct(Plugin $plugin, InstallContext $context)
+    public function __construct(Plugin $plugin, InstallContext $context, $pluginDir)
     {
         // set params
         $this->plugin = $plugin;
         $this->context = $context;
+        $this->pluginDir = $pluginDir;
     }
 
     /**
@@ -60,5 +70,29 @@ class Update
      */
     public function update($version)
     {
+        // switch old version
+        switch ($version) {
+            case '0.0.0':
+            case '1.0.0':
+            case '1.0.1':
+                $this->updateSql('1.1.0');
+        }
+    }
+
+    /**
+     * ...
+     *
+     * @param string $version
+     */
+    private function updateSql($version)
+    {
+        // get the sql query for this update
+        $sql = @file_get_contents(rtrim($this->pluginDir, '/') . '/Setup/Update/update-' . $version . '.sql');
+
+        // execute the query and catch any db exception and ignore it
+        try {
+            Shopware()->Db()->exec($sql);
+        } catch (Exception $exception) {
+        }
     }
 }

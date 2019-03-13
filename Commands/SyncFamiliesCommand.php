@@ -50,6 +50,9 @@ class SyncFamiliesCommand extends ShopwareCommand
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
+        // ...
+        $output->writeln('reading .pdf files');
+
         // read every .pdf file
         $pdf = glob(rtrim($this->configuration['pdfDirectory'], "/") . "/*.pdf");
 
@@ -62,7 +65,42 @@ class SyncFamiliesCommand extends ShopwareCommand
         foreach ($pdf as $file) {
             // remove everything
             $file = str_replace(rtrim($this->configuration['pdfDirectory'], "/") . "/", "", $file);
-            $key = str_replace(".pdf", "", $file);
+            $key = strtolower(str_replace(".pdf", "", $file));
+
+            // insert into with ignore on unique key
+            $query = "
+                INSERT IGNORE INTO `ost_article_families` (`id`, `key`, `file`)
+                VALUES (NULL, :key, :file);
+            ";
+            $this->db->query($query, array( 'key' => $key, 'file' => $file ));
+
+            // advance progress bar
+            $progressBar->advance();
+        }
+
+        // done
+        $progressBar->finish();
+        $output->writeln('');
+
+        // ...
+        $output->writeln('reading individual keys');
+
+        // ...
+        $query = '
+            SELECT id, `key`
+            FROM ost_article_families_keys
+        ';
+        $keys = Shopware()->Db()->fetchPairs($query);
+
+        // start the progress bar
+        $progressBar = new ProgressBar($output, count($keys));
+        $progressBar->setRedrawFrequency(1);
+        $progressBar->start();
+
+        // loop them
+        foreach ($keys as $key) {
+            // remove everything
+            $key = strtolower($key);
 
             // insert into with ignore on unique key
             $query = "

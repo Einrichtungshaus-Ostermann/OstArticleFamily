@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="../../../../engine/Shopware/Components/Plugin/schema/menu.xsd">
+    <entries>
+
+        <!-- main app -->
+        <entry>
+            <name>OstArticleFamily</name>
+            <label>Typenpläne</label>
+            <controller>OstArticleFamily</controller>
+            <action>index</action>
+            <class>sprite-blue-document-template</class>
+            <parent identifiedBy="controller">Article</parent>
+        </entry>
+
+    </entries>
+</menu>
