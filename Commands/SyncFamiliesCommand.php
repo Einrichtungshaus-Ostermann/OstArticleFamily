@@ -107,7 +107,7 @@ class SyncFamiliesCommand extends ShopwareCommand
                 INSERT IGNORE INTO `ost_article_families` (`id`, `key`, `file`)
                 VALUES (NULL, :key, :file);
             ";
-            $this->db->query($query, array( 'key' => $key, 'file' => $file ));
+            $this->db->query($query, array( 'key' => $key, 'file' => "" ));
 
             // advance progress bar
             $progressBar->advance();
