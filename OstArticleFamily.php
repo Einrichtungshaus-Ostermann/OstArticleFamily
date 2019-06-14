@@ -17,6 +17,13 @@
  * - added backend app for additional family keys
  * - added .pdf download to article slider
  *
+ * 1.1.1
+ * - added blocks to template
+ *
+ * 1.1.2
+ * - added plugin configuration for frontend pdf directory
+ * - fixed article family .pdf download icon
+ *
  * @package   OstArticleFamily
  *
  * @author    Eike Brandt-Warneke <e.brandt-warneke@ostermann.de>

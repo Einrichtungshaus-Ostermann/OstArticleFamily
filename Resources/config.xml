@@ -10,9 +10,16 @@
 
         <element type="text">
             <name>pdfDirectory</name>
-            <label>Verzeichnis</label>
+            <label>Absolutes Verzeichnis</label>
             <value>/htdocs/www.ostermann.de/typenplan/</value>
             <description>In welchem Verzeichnis sind die .pdf Typenpläne hinterlegt?</description>
+        </element>
+
+        <element type="text">
+            <name>pdfFrontendDirectory</name>
+            <label>Relatives Verzeichnis</label>
+            <value>typenplan/</value>
+            <description>In welchem Verzeichnis sind die .pdf Typenpläne für den Shop hinterlegt?</description>
         </element>
 
         <element type="button">

@@ -134,6 +134,9 @@ class Detail
         // get the family
         $family = Shopware()->Models()->toArray(Shopware()->Models()->find(Family::class, $familyId));
 
+        // add relative directory for frontend
+        $family['directory'] = rtrim($this->configuration['pdfFrontendDirectory'], "/") . "/";
+
         // assign them
         $view->assign("ostArticleFamily", $family);
         $view->assign("ostArticleFamilyArticles", $articles);
