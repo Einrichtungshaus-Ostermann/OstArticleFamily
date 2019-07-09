@@ -24,6 +24,9 @@
  * - added plugin configuration for frontend pdf directory
  * - fixed article family .pdf download icon
  *
+ * 1.1.3
+ * - moved product-slider to separate template
+ *
  * @package   OstArticleFamily
  *
  * @author    Eike Brandt-Warneke <e.brandt-warneke@ostermann.de>
