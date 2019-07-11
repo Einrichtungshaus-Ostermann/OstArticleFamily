@@ -22,7 +22,7 @@
             {/block}
         {/if}
         {block name="ost-article-family--slider-title"}
-            <div class="title">Artikel Modell-Familie</div>
+            <div class="title">{s name="slider-title"}Artikel Modell-Familie{/s}</div>
         {/block}
         {block name="ost-article-family--slider"}
             {include file="frontend/_includes/product_slider.tpl" articles=$ostArticleFamilyArticles}

@@ -27,6 +27,10 @@
  * 1.1.3
  * - moved product-slider to separate template
  *
+ * 1.1.4
+ * - added snippets to template
+ * - added sorting by name
+ *
  * @package   OstArticleFamily
  *
  * @author    Eike Brandt-Warneke <e.brandt-warneke@ostermann.de>

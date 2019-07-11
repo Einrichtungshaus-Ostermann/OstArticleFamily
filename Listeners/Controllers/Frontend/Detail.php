@@ -108,8 +108,11 @@ class Detail
             FROM s_articles_details AS article
                 LEFT JOIN s_articles_attributes AS attribute
                     ON article.id = attribute.articledetailsID
+                LEFT JOIN s_articles
+                    ON article.articleID = s_articles.id
             WHERE article.kind = 1
                 AND attribute." . $this->configuration['attributeFamily'] . " = :familyId
+            ORDER BY s_articles.name ASC, article.ordernumber ASC
         ";
         $numbers = Shopware()->Db()->fetchPairs($query, array( 'familyId' => $familyId ));
 
