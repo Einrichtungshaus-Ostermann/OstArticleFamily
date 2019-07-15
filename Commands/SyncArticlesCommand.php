@@ -88,10 +88,17 @@ class SyncArticlesCommand extends ShopwareCommand
                 WHERE articleID IN (
                     SELECT id
                     FROM s_articles
-                    WHERE name LIKE :key
+                    WHERE name LIKE :key1
+                        OR name LIKE :key2
+                        OR name LIKE :key3
                 )
             ";
-            $this->db->query($query, array( 'id' => $family->getId(), 'key' => "%" . $family->getKey() . "%" ));
+            $this->db->query($query, array(
+                'id' => $family->getId(),
+                'key1' => "% " . $family->getKey() . " %",
+                'key2' => "% " . $family->getKey() . "",
+                'key3' => "" . $family->getKey() . " %"
+            ));
 
             // advance progress bar
             $progressBar->advance();

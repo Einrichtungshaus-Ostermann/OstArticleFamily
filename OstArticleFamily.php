@@ -31,6 +31,9 @@
  * - added snippets to template
  * - added sorting by name
  *
+ * 1.1.5
+ * - fixed searching for keys within the article name
+ *
  * @package   OstArticleFamily
  *
  * @author    Eike Brandt-Warneke <e.brandt-warneke@ostermann.de>
