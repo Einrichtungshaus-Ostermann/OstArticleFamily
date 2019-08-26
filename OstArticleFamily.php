@@ -34,6 +34,9 @@
  * 1.1.5
  * - fixed searching for keys within the article name
  *
+ * 1.2.0
+ * - added add-to-basket button configuration to family articles
+ *
  * @package   OstArticleFamily
  *
  * @author    Eike Brandt-Warneke <e.brandt-warneke@ostermann.de>

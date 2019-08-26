@@ -25,7 +25,7 @@
             <div class="title">{s name="slider-title"}Artikel Modell-Familie{/s}</div>
         {/block}
         {block name="ost-article-family--slider"}
-            {include file="frontend/_includes/product_slider.tpl" articles=$ostArticleFamilyArticles}
+            {include file="frontend/_includes/product_slider.tpl" articles=$ostArticleFamilyArticles productBoxLayout="dvsn-article-family"}
         {/block}
     </div>
 {/block}

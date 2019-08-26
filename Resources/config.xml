@@ -23,6 +23,25 @@
         </element>
 
         <element type="button">
+            <name>basketButton</name>
+            <label><![CDATA[<b>Warenkorb</b>]]></label>
+        </element>
+
+        <element type="boolean">
+            <name>basketStatus</name>
+            <label>Warenkorb Button anzeigen</label>
+            <value>false</value>
+            <description>Soll unter jedem Artikel ein "In den Warenkorb" Button angezeigt werden?</description>
+        </element>
+
+        <element type="boolean">
+            <name>basketOffcanvasStatus</name>
+            <label>Off-Canvas aktivieren</label>
+            <value>true</value>
+            <description>Soll sich der Off-Canvas Warenkorb öffnen? Alternativ wird eine Ladeanimation angezeigt und der Button anschließend deaktiviert.</description>
+        </element>
+
+        <element type="button">
             <name>attributeButton</name>
             <label><![CDATA[<b>Attribute</b>]]></label>
         </element>
