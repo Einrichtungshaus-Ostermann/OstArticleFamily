@@ -16,13 +16,13 @@
                     {assign var="pdf" value="{$ostArticleFamily.directory}{$ostArticleFamily.file}"}
 
                     {* the actual link *}
-                    <a href="{$pdf}" title="Typenplan als .pdf laden" target="_blank" style="cursor: pointer;"><img style="width: 44px; height: 44px;" src="{link file=$image}"></a>
+                    <a href="{$pdf}" title="{s name="pdf-download-title"}Typenplan als .pdf laden{/s}" target="_blank" style="cursor: pointer;"><img style="width: 44px; height: 44px;" src="{link file=$image}"></a>
 
                 </div>
             {/block}
         {/if}
         {block name="ost-article-family--slider-title"}
-            <div class="title">{s name="slider-title"}Artikel Modell-Familie{/s}</div>
+            <div class="title">{s name="slider-title-with-name"}Modell-Familie: {$ostArticleFamily.key|ucwords}{/s}</div>
         {/block}
         {block name="ost-article-family--slider"}
             {include file="frontend/_includes/product_slider.tpl" articles=$ostArticleFamilyArticles productBoxLayout="dvsn-article-family"}

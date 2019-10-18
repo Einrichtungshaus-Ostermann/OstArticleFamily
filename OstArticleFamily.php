@@ -37,6 +37,9 @@
  * 1.2.0
  * - added add-to-basket button configuration to family articles
  *
+ * 1.2.1
+ * - added family key to the slider title
+ *
  * @package   OstArticleFamily
  *
  * @author    Eike Brandt-Warneke <e.brandt-warneke@ostermann.de>
