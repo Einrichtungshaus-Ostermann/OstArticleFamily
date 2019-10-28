@@ -40,6 +40,9 @@
  * 1.2.1
  * - added family key to the slider title
  *
+ * 1.2.2
+ * - removed arrow from buttons within the slider
+ *
  * @package   OstArticleFamily
  *
  * @author    Eike Brandt-Warneke <e.brandt-warneke@ostermann.de>
