@@ -52,6 +52,7 @@ class SyncFamiliesCommand extends ShopwareCommand
     {
         // ...
         $output->writeln('reading .pdf files');
+        $output->writeln('directory: ' . rtrim($this->configuration['pdfDirectory'], "/") . "/*.pdf");
 
         // read every .pdf file
         $pdf = glob(rtrim($this->configuration['pdfDirectory'], "/") . "/*.pdf");
@@ -61,11 +62,21 @@ class SyncFamiliesCommand extends ShopwareCommand
         $progressBar->setRedrawFrequency(1);
         $progressBar->start();
 
+        // every pdf file to remove every other which is not this one
+        $pdfFiles = array();
+
         // loop them
         foreach ($pdf as $file) {
             // remove everything
             $file = str_replace(rtrim($this->configuration['pdfDirectory'], "/") . "/", "", $file);
             $key = strtolower(str_replace(".pdf", "", $file));
+
+            // remove special chars
+            $key = str_replace(array('"', "'"), '', $key);
+            $file = str_replace(array('"', "'"), '', $file);
+
+            // add
+            $pdfFiles[] = '"' . $file . '"';
 
             // insert into with ignore on unique key
             $query = "
@@ -81,6 +92,21 @@ class SyncFamiliesCommand extends ShopwareCommand
         // done
         $progressBar->finish();
         $output->writeln('');
+
+        // remove every obsolete pdf
+        $output->writeln('removing obsolete .pdf keys within the db');
+
+        // only if we even have some
+        if (count($pdfFiles) > 0) {
+            // ...
+            $query = '
+            DELETE FROM ost_article_families
+            WHERE `file` IS NOT NULL
+                AND `file` != ""
+                AND `file` NOT IN(' . implode(',', $pdfFiles) . ')
+        ';
+            $this->db->query($query);
+        }
 
         // ...
         $output->writeln('reading individual keys');
@@ -101,6 +127,7 @@ class SyncFamiliesCommand extends ShopwareCommand
         foreach ($keys as $key) {
             // remove everything
             $key = strtolower($key);
+            $key = str_replace(array('"', "'"), '', $key);
 
             // insert into with ignore on unique key
             $query = "
@@ -116,5 +143,26 @@ class SyncFamiliesCommand extends ShopwareCommand
         // done
         $progressBar->finish();
         $output->writeln('');
+
+        // ...
+        $output->writeln('removing obsolete individual keys within the db');
+
+        // remove
+        $query = '
+            DELETE FROM ost_article_families
+            WHERE ost_article_families.id IN (
+                SELECT id
+                FROM (
+                    SELECT id
+                    FROM `ost_article_families` 
+                    WHERE ost_article_families.file = ""
+                        AND ost_article_families.`key` NOT IN (
+                            SELECT ost_article_families_keys.`key`
+                            FROM ost_article_families_keys
+                        ) 
+                ) AS innerFamilies
+            )
+        ';
+        $this->db->query($query);
     }
 }

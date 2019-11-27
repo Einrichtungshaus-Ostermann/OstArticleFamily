@@ -43,6 +43,9 @@
  * 1.2.2
  * - removed arrow from buttons within the slider
  *
+ * 1.2.3
+ * - fixed removal of obsolete families
+ *
  * @package   OstArticleFamily
  *
  * @author    Eike Brandt-Warneke <e.brandt-warneke@ostermann.de>
