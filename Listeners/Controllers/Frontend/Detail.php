@@ -102,6 +102,9 @@ class Detail
         // get the id
         $familyId = (integer) $view->getAssign('sArticle')['attributes']['core']->get($this->configuration['attributeFamily']);
 
+        // get the hwg
+        $hwg = (integer) $view->getAssign('sArticle')['attributes']['core']->get('attr2');
+
         // get every order number with the same family id
         $query = "
             SELECT article.id, article.ordernumber
@@ -112,6 +115,7 @@ class Detail
                     ON article.articleID = s_articles.id
             WHERE article.kind = 1
                 AND attribute." . $this->configuration['attributeFamily'] . " = :familyId
+                AND attribute.attr2 " . (($hwg < 90) ? ' < 90 ' : ' >= 90 ') . "
             ORDER BY s_articles.name ASC, article.ordernumber ASC
         ";
         $numbers = Shopware()->Db()->fetchPairs($query, array( 'familyId' => $familyId ));

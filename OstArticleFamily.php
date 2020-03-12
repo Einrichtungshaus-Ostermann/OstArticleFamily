@@ -46,6 +46,10 @@
  * 1.2.3
  * - fixed removal of obsolete families
  *
+ * 1.2.4
+ * - only show family articles with either hwg < 90 or hwg >= 90 depending
+ *   on the source article
+ *
  * @package   OstArticleFamily
  *
  * @author    Eike Brandt-Warneke <e.brandt-warneke@ostermann.de>
