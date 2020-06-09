@@ -6,7 +6,7 @@
         <!-- main app -->
         <entry>
             <name>OstArticleFamily</name>
-            <label>Typenpläne</label>
+            <label>Modell-Familie</label>
             <controller>OstArticleFamily</controller>
             <action>index</action>
             <class>sprite-blue-document-template</class>

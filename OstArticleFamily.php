@@ -50,6 +50,9 @@
  * - only show family articles with either hwg < 90 or hwg >= 90 depending
  *   on the source article
  *
+ * 1.2.5
+ * - renamed menu entry
+ *
  * @package   OstArticleFamily
  *
  * @author    Eike Brandt-Warneke <e.brandt-warneke@ostermann.de>
